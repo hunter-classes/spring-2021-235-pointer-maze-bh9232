@@ -31,8 +31,5 @@ struct MazeCell {
 bool isPathToFreedom(MazeCell* start, const std::string& moves);
 
 
-//additional stuff
-bool completed = false;
-std::string itemTracker = "";
-
+//additional methods
 bool checkResult(bool completed, string result);

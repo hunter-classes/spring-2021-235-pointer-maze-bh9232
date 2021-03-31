@@ -21,10 +21,15 @@ bool checkResult(bool completed, std::string result){
 
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
 
-    while(completed == false){
+    bool completed = false;
+    std::string itemTracker = "";
 
-        if(north != nullptr){
+    if(start )
 
+    for(int i = 0; i < moves.length(); i++){
+
+        //check if North has items
+        if(moves[i] == "N"){
             if(north->whatsHere == Item::SPELLBOOK){
                 itemTracker += "S";
             }else if(north->whatsHere == Item::POTION){
@@ -32,12 +37,21 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
             }else if(north->whatsHere == Item::WAND){
                 itemTracker += "W";
             }
-            start = start->north;
-
         }
 
-        if(east != nullptr){
+        //check if South has items
+        if(moves[i] == "S"){
+            if(south->whatsHere == Item::SPELLBOOK){
+                itemTracker += "S";
+            }else if(south->whatsHere == Item::POTION){
+                itemTracker += "P";
+            }else if(sotuh->whatsHere == Item::WAND){
+                itemTracker += "W";
+            }
+        }
 
+        //check if East has items
+        if(moves[i] == "E"){
             if(east->whatsHere == Item::SPELLBOOK){
                 itemTracker += "S";
             }else if(east->whatsHere == Item::POTION){
@@ -45,25 +59,10 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
             }else if(east->whatsHere == Item::WAND){
                 itemTracker += "W";
             }
-            start = start->east;
-
         }
 
-        if(south != nullptr){
-
-            if(south->whatsHere == Item::SPELLBOOK){
-                itemTracker += "S";
-            }else if(south->whatsHere == Item::POTION){
-                itemTracker += "P";
-            }else if(south->whatsHere == Item::WAND){
-                itemTracker += "W";
-            }
-            start = start->south;
-
-        }
-
-        if(west != nullptr){
-
+        //check if West has items
+        if(moves[i] == "W"){
             if(west->whatsHere == Item::SPELLBOOK){
                 itemTracker += "S";
             }else if(west->whatsHere == Item::POTION){
@@ -71,10 +70,7 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
             }else if(west->whatsHere == Item::WAND){
                 itemTracker += "W";
             }
-            start = start->west;
-
         }
 
     }
-
 }
