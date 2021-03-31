@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 /**
@@ -32,4 +33,5 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves);
 
 
 //additional methods
-bool checkResult(bool completed, string result);
+void checkItem(MazeCell *cell, bool spellbook, bool potion, bool wand);
+bool checkValid(MazeCell *cell, std::string nextCell);

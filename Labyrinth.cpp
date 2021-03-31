@@ -1,76 +1,65 @@
 #include "Labyrinth.h"
 
-bool checkResult(bool completed, std::string result){
 
-    //requirements completed = true and count = 3 (Spellbook, Potion, Wand)
-    int count = 0;
+void checkItem(MazeCell *start, bool spellbook, bool potion, bool wand){
 
-    for(int i = 0; i < result.length(); i++){
-        if(result.find("S") != std::string::npos) count++;
-        if(result.find("P") != std::string::npos) count++;
-        if(result.find("W") != std::string::npos) count++;
+    if(start->whatsHere == Item::WAND){
+        std::cout << "Wand Obtained\n";
+        wand = true;
+    }else if(start->whatsHere == Item::POTION){
+        std::cout << "Potion Obtained\n";
+        potion = true;
+    }else if(start->whatsHere == Item::SPELLBOOK){
+        std::cout << "Spellbook Obtained\n";
+        spellbook = true;
     }
 
-    if(count == 3){
-        completed = true;
-    }
+}
 
-    return completed;
+bool checkValid(MazeCell *start, std::string nextCell){
+
+    if(nextCell == "N" && start->north != nullptr){
+        std::cout << "North Works\n";
+        start = start->north;
+        return true;
+    }else if(nextCell == "S" && start->south != nullptr){
+        std::cout << "South Works\n";
+        start = start->south;
+        return true;
+    }
+    else if(nextCell == "E" && start->east != nullptr){
+        std::cout << "East Works\n";
+        start = start->east;
+        return true;
+    }else if(nextCell == "W" && start->west != nullptr){
+        std::cout << "West Works\n";
+        start = start->west;
+        return true;
+    }else{
+        return false;
+    }
 
 }
 
 bool isPathToFreedom(MazeCell* start, const std::string& moves) {
 
-    bool completed = false;
-    std::string itemTracker = "";
+    bool spellbook = false;
+    bool potion = false;
+    bool wand = false;
 
-    if(start )
+    //checking start location
+    checkItem(start, spellbook, potion, wand);
 
     for(int i = 0; i < moves.length(); i++){
-
-        //check if North has items
-        if(moves[i] == "N"){
-            if(north->whatsHere == Item::SPELLBOOK){
-                itemTracker += "S";
-            }else if(north->whatsHere == Item::POTION){
-                itemTracker += "P";
-            }else if(north->whatsHere == Item::WAND){
-                itemTracker += "W";
-            }
+        
+        if(!checkValid(start, moves.substr(i, i+1))){
+            return false;
         }
-
-        //check if South has items
-        if(moves[i] == "S"){
-            if(south->whatsHere == Item::SPELLBOOK){
-                itemTracker += "S";
-            }else if(south->whatsHere == Item::POTION){
-                itemTracker += "P";
-            }else if(sotuh->whatsHere == Item::WAND){
-                itemTracker += "W";
-            }
-        }
-
-        //check if East has items
-        if(moves[i] == "E"){
-            if(east->whatsHere == Item::SPELLBOOK){
-                itemTracker += "S";
-            }else if(east->whatsHere == Item::POTION){
-                itemTracker += "P";
-            }else if(east->whatsHere == Item::WAND){
-                itemTracker += "W";
-            }
-        }
-
-        //check if West has items
-        if(moves[i] == "W"){
-            if(west->whatsHere == Item::SPELLBOOK){
-                itemTracker += "S";
-            }else if(west->whatsHere == Item::POTION){
-                itemTracker += "P";
-            }else if(west->whatsHere == Item::WAND){
-                itemTracker += "W";
-            }
-        }
+        checkItem(start, spellbook, potion, wand);
 
     }
+
+    //checking result
+    return (wand && potion && spellbook);
+
 }
