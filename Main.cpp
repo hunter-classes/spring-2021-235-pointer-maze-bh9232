@@ -9,11 +9,19 @@
  * do NOT edit the value of kYourName. Changing kYourName will change which
  * maze you get back, which might invalidate all your hard work!
  */
-const std::string kYourName = "TODO: Replace this string with your name.";
+
+// Milestone 1
+// const std::string kYourName = "TODO: Replace this string with your name.";
 
 /* Change these constants to contain the paths out of your mazes. */
-const std::string kPathOutOfNormalMaze = "SESSWENNENSESS";
-const std::string kPathOutOfTwistyMaze = "ESWEESWENE";
+// const std::string kPathOutOfNormalMaze = "SESSWENNENSESS";
+// const std::string kPathOutOfTwistyMaze = "ESWEESWENE";
+
+//Milestone 2
+const std::string kYourName = "Brian Hong";
+
+const std::string kPathOutOfNormalMaze = "WSEENEWSESWESWWNW";
+// const std::string kPathOutOfTwistyMaze = "ESWEESWENE";
 
 int main() {
     /* Generate the maze.
@@ -36,15 +44,15 @@ int main() {
      * Note: Don't set a breakpoint on this line. Otherwise, you'll see twistyStartLocation before
      * it's been initialized.
      */
-    MazeCell* twistyStartLocation = twistyMazeFor(kYourName);
+    // MazeCell* twistyStartLocation = twistyMazeFor(kYourName);
     
-    /* Set a breakpoint here to explore your twisty maze! */
+    // /* Set a breakpoint here to explore your twisty maze! */
     
-    if (isPathToFreedom(twistyStartLocation, kPathOutOfTwistyMaze)) {
-        std::cout << "Congratulations! You've found a way out of your twisty labyrinth." << std::endl;
-    } else {
-        std::cout << "Sorry, but you're still stuck in your twisty labyrinth." << std::endl;
-    }
+    // if (isPathToFreedom(twistyStartLocation, kPathOutOfTwistyMaze)) {
+    //     std::cout << "Congratulations! You've found a way out of your twisty labyrinth." << std::endl;
+    // } else {
+    //     std::cout << "Sorry, but you're still stuck in your twisty labyrinth." << std::endl;
+    // }
     
     return 0;
 }
