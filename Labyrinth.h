@@ -33,5 +33,4 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves);
 
 
 //additional methods
-void checkItem(MazeCell *cell, bool spellbook, bool potion, bool wand);
-bool checkValid(MazeCell *cell, std::string nextCell);
+void checkItem(MazeCell *cell, bool &spellbook, bool &potion, bool &wand);
