@@ -30,8 +30,8 @@ bool isPathToFreedom(MazeCell* start, const std::string& moves) {
     for(int i = 0; i < moves.length(); i++){
         
         if(moves.at(i) == 'N' && start->north != nullptr){
-        std::cout << "North Works\n";
-        start = start->north;
+          std::cout << "North Works\n";
+          start = start->north;
         checkItem(start, spellbook, potion, wand);
         }else if(moves.at(i) == 'S' && start->south != nullptr){
             std::cout << "South Works\n";
