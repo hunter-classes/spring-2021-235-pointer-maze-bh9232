@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 #include <string>
 
 /**
@@ -29,3 +30,7 @@ struct MazeCell {
  * and you can't move in directions that don't exist in the maze.
  */
 bool isPathToFreedom(MazeCell* start, const std::string& moves);
+
+
+//additional methods
+void checkItem(MazeCell *cell, bool &spellbook, bool &potion, bool &wand);
